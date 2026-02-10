@@ -122,13 +122,16 @@ pip install bcrypt cryptography
 
 ## Test execution (screenshots)
 
-> **Indsæt følgende screenshots manuelt:**
 
 1. **Screenshot af PyTest output med beståede crypto-tests**
    Kør `python -m pytest tests/ -v` og tag et screenshot af terminalen der viser de grønne PASSED tests.
+<img width="1268" height="315" alt="cpassed" src="https://github.com/user-attachments/assets/d819185c-50a9-4c13-b233-bf02b142a8d5" />
 
 2. **Screenshot af PyTest output med fejlende og skippede crypto-tests**
    Samme kørsel vil vise den fejlende test (`FAILED`) og den skippede test (`SKIPPED`). Tag et screenshot af dette.
+<img width="1289" height="626" alt="cfailed" src="https://github.com/user-attachments/assets/b3d1d83d-d0e0-4feb-937a-e12be9c39617" />
 
 3. **Screenshot af terminal-output fra PyTest**
    Tag et screenshot af den fulde terminal-output efter kørsel af alle tests, inklusiv summary-linjen der viser antal passed, failed og skipped.
+   <img width="1277" height="822" alt="tests" src="https://github.com/user-attachments/assets/c7b7db52-50a1-43f6-a287-dc98ea32e29a" />
+

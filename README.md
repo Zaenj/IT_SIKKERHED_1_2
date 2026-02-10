@@ -7,8 +7,8 @@
 
 ## Beskrivelse
 
-Dette repository indeholder multiple uafhængige opgaver til kurset Softwaresikkerhed.
-Hver opgave er selvstændig og kan køres uafhængigt af de andre.
+Dette repository indeholder flere uafhængige opgaver til kurset Softwaresikkerhed.
+Hver opgave kan køres for sig selv.
 
 ---
 

@@ -15,12 +15,12 @@
 
 ### Valg: Fernet (AES-128-CBC)
 
-Fernet blev valgt fordi:
+Jeg valgte Fernet fordi:
 
-- Det er en del af det velkendte `cryptography`-bibliotek i Python.
-- Det tilbyder authenticated encryption (integritet + fortrolighed).
-- Det er simpelt at bruge og passende til undervisningsformål.
-- Nøglen kan genereres med én linje kode.
+- Det er en del af `cryptography`-biblioteket i Python, som er velkendt og bredt brugt.
+- Det giver både kryptering og integritetstjek, så man kan se hvis data er blevet ændret.
+- Det er simpelt at bruge — nøglen kan genereres med én linje kode.
+- Til en skoleopgave er det mere end rigeligt.
 
 ---
 
@@ -35,41 +35,41 @@ Fernet blev valgt fordi:
 
 ### Valg: bcrypt
 
-bcrypt blev valgt fordi:
+Jeg valgte bcrypt fordi:
 
-- Det er designet specifikt til password-hashing.
-- Det er langsomt med vilje (modstandsdygtig over for brute-force).
-- Salt genereres automatisk og inkluderes i hashen.
-- Det er bredt understøttet og velafprøvet.
+- Det er lavet specifikt til passwords, ikke til generel hashing.
+- Det er langsomt med vilje — det gør brute-force meget sværere.
+- Salt bliver genereret automatisk og gemt som en del af hashen.
+- Det er velafprøvet og bruges i mange projekter.
 
 ---
 
 ## Hvornår data krypteres
 
-Personlige data (navn, adresse, CPR-nummer osv.) krypteres **inden de gemmes**:
+Personlige data (navn, adresse, CPR osv.) krypteres **inden de gemmes**:
 
-1. Brugerens personlige data modtages som plaintext.
-2. Data krypteres med Fernet og den hemmelige nøgle.
-3. Kun den krypterede version gemmes.
+1. Data kommer ind som plaintext.
+2. Det krypteres med Fernet og den hemmelige nøgle.
+3. Kun den krypterede version gemmes i databasen.
 
-Passwords krypteres **aldrig** — de **hashes** i stedet med bcrypt.
+Passwords krypteres **aldrig** — de hashes med bcrypt i stedet, fordi man aldrig skal kunne læse et password tilbage.
 
 ---
 
 ## Hvornår data dekrypteres
 
-Data dekrypteres **kun når det er nødvendigt**:
+Data dekrypteres **kun når det faktisk er nødvendigt**:
 
-1. Den krypterede tekst hentes fra lagring.
-2. Dekryptering sker med den hemmelige nøgle.
-3. Den dekrypterede data bruges til det nødvendige formål (f.eks. visning).
-4. Den dekrypterede data **slettes fra memory** (variablen slettes med `del`) hurtigst muligt.
+1. Den krypterede tekst hentes fra filen.
+2. Den dekrypteres med nøglen.
+3. Data bruges til det den skal (f.eks. vises til brugeren).
+4. Bagefter slettes den dekrypterede data fra memory med `del`.
 
 ---
 
 ## Hvornår dekrypteret data fjernes fra memory
 
-Dekrypteret data bør fjernes fra memory **så snart den ikke længere bruges**:
+Man bør fjerne dekrypteret data fra memory **så snart man er færdig med at bruge det**:
 
 ```python
 decrypted = decrypt_data(encrypted_text, key)
@@ -77,7 +77,7 @@ decrypted = decrypt_data(encrypted_text, key)
 del decrypted  # Fjern fra memory
 ```
 
-Dette reducerer risikoen for at følsomme data kan udtrækkes fra hukommelsen (f.eks. ved memory dumps eller side-channel attacks).
+Pointen er at følsomme data ikke bare skal ligge i hukommelsen længere end nødvendigt. Ellers risikerer man at det kan læses via memory dumps.
 
 ---
 
@@ -91,18 +91,18 @@ Dette reducerer risikoen for at følsomme data kan udtrækkes fra hukommelsen (f
 | **Retten til sletning** | Slet den krypterede data. Alternativt kan krypteringsnøglen destrueres ("crypto-shredding"). |
 | **Pseudonymisering** | Kryptering gør data ulæselig uden nøgle. |
 
-**Crypto-shredding:** Ved at slette krypteringsnøglen bliver al data krypteret med den nøgle ubrugelig. Dette er en effektiv måde at implementere "retten til at blive glemt" under GDPR.
+**Crypto-shredding:** Hvis man sletter krypteringsnøglen, kan al data der er krypteret med den aldrig læses igen. Det er en smart måde at "slette" store mængder data på — man sletter bare nøglen i stedet for alt dataen.
 
 ---
 
 ## Sikkerhedsovervejelser
 
-- **Passwords hashes, aldrig krypteres.** Hashing er one-way — selv med adgang til databasen kan passwords ikke udtrækkes.
-- **Krypteringsnøglen skal opbevares sikkert.** Hvis nøglen kompromitteres, kan al krypteret data læses.
-- **Brug altid salt.** bcrypt gør dette automatisk.
-- **Dekrypteret data skal fjernes fra memory.** Brug `del` på variabler med følsomme data.
-- **Brug ikke MD5 eller SHA-256 til passwords.** De er for hurtige og sårbare over for brute-force.
-- **Nøglen bør ikke gemmes sammen med dataen.** I praksis bruges key management services (KMS).
+- Passwords skal altid hashes, aldrig krypteres. Hashing er one-way, så selv hvis nogen får adgang til databasen, kan de ikke læse passwords.
+- Krypteringsnøglen skal opbevares et sikkert sted. Hvis nøglen lækker, kan al krypteret data læses.
+- Brug altid salt til password-hashing — bcrypt gør det automatisk.
+- Dekrypteret data bør slettes fra memory (`del`) når man er færdig med det.
+- MD5 og SHA-256 er for hurtige til passwords og kan brute-forces. Brug bcrypt eller Argon2 i stedet.
+- Nøglen bør ikke gemmes i samme fil som dataen. I praksis bruger man en key management service (KMS).
 
 ---
 

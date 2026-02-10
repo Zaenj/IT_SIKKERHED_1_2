@@ -3,7 +3,9 @@
     "allow": [
       "Bash(python -m pytest:*)",
       "Bash(dir:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(python:*)",
+      "Bash(python -c:*)"
     ]
   }
 }

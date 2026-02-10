@@ -7,7 +7,8 @@
 
 ## Beskrivelse
 
-Dette repository indeholder opgaver til kurset Softwaresikkerhed.
+Dette repository indeholder multiple uafhængige opgaver til kurset Softwaresikkerhed.
+Hver opgave er selvstændig og kan køres uafhængigt af de andre.
 
 ---
 
@@ -17,6 +18,8 @@ Dette repository indeholder opgaver til kurset Softwaresikkerhed.
 |--------|-------------|
 | [pytest-intro](./pytest-intro/) | Introduktion til PyTest - passing, failing og skipped tests |
 | [test-strategier](./test-strategier/) | Teststrategier og testteknikker med beslutningsbaserede tests |
+| [flat-file-db](./flat-file-db/) | Flat file database med JSON — CRUD, enable/disable brugere |
+| [crypto-hashing](./crypto-hashing/) | Kryptering (Fernet/AES) og hashing (bcrypt) af brugerdata |
 
 ---
 
@@ -25,8 +28,8 @@ Dette repository indeholder opgaver til kurset Softwaresikkerhed.
 - Python 3.11
 - PyTest
 
-### Installation af PyTest
+### Installation
 
 ```bash
-python -m pip install pytest
+python -m pip install pytest bcrypt cryptography
 ```

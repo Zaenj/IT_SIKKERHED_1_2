@@ -119,18 +119,15 @@ python -m pytest tests/ -v
 
 ## Test execution (screenshots)
 
+### Beståede tests
 
-1. **Screenshot af PyTest output med beståede tests**
-   Kør `python -m pytest tests/ -v` og tag et screenshot af terminalen der viser de grønne PASSED tests.
-   <img width="1270" height="296" alt="Passed" src="https://github.com/user-attachments/assets/d17168dd-b806-4a02-a4dc-4bccdde77e44" />
+<img width="1270" height="296" alt="Passed" src="https://github.com/user-attachments/assets/d17168dd-b806-4a02-a4dc-4bccdde77e44" />
 
+### Fejlende og skippede tests
 
-3. **Screenshot af PyTest output med fejlende og skippede tests**
-   Samme kørsel vil vise den fejlende test (`FAILED`) og den skippede test (`SKIPPED`). Tag et screenshot af dette.
-   <img width="1306" height="734" alt="Failed" src="https://github.com/user-attachments/assets/01cc4591-429f-4fe5-bcbe-267278e2574f" />
+<img width="1306" height="734" alt="Failed" src="https://github.com/user-attachments/assets/01cc4591-429f-4fe5-bcbe-267278e2574f" />
 
+### Given / When / Then kommentarer i testfilen
 
-5. **Screenshot af testfilen med Given / When / Then kommentarer**
-   Åbn `tests/test_flat_file_db.py` i en editor og tag et screenshot der viser de strukturerede Given / When / Then kommentarer i mindst én test.
-   <img width="1270" height="296" alt="Passed" src="https://github.com/user-attachments/assets/89cc2afc-a4c5-41e8-ac79-03de98f7f363" />
+<img width="1270" height="296" alt="Given When Then" src="https://github.com/user-attachments/assets/89cc2afc-a4c5-41e8-ac79-03de98f7f363" />
 

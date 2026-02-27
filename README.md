@@ -20,6 +20,7 @@ Hver opgave kan køres for sig selv.
 | [test-strategier](./test-strategier/) | Teststrategier og testteknikker med beslutningsbaserede tests |
 | [flat-file-db](./flat-file-db/) | Flat file database med JSON — CRUD, enable/disable brugere |
 | [crypto-hashing](./crypto-hashing/) | Kryptering (Fernet/AES) og hashing (bcrypt) af brugerdata |
+| [rest-api](./rest-api/) | REST API med FastAPI — CRUD-endpoints, lagdelt arkitektur og flat-file datalager |
 
 ---
 
@@ -27,9 +28,10 @@ Hver opgave kan køres for sig selv.
 
 - Python 3.11
 - PyTest
+- FastAPI / Uvicorn
 
 ### Installation
 
 ```bash
-python -m pip install pytest bcrypt cryptography
+python -m pip install pytest bcrypt cryptography fastapi uvicorn
 ```

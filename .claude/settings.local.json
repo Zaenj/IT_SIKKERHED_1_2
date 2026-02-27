@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(python:*)",
+      "Bash(python -c:*)",
+      "Bash(git rm -r --cached .claude/)",
+      "Bash(git config --global core.excludesfile)"
+    ]
+  }
+}

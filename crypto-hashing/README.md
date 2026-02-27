@@ -17,9 +17,9 @@
 
 Jeg valgte Fernet fordi:
 
-- Det er en del af `cryptography`-biblioteket i Python, som er velkendt og bredt brugt.
+- Det er en del af `cryptography` biblioteket i Python, som er velkendt og bredt brugt.
 - Det giver både kryptering og integritetstjek, så man kan se hvis data er blevet ændret.
-- Det er simpelt at bruge — nøglen kan genereres med én linje kode.
+- Det er simpelt at bruge, nøglen kan genereres med én linje kode.
 - Til en skoleopgave er det mere end rigeligt.
 
 ---
@@ -38,7 +38,7 @@ Jeg valgte Fernet fordi:
 Jeg valgte bcrypt fordi:
 
 - Det er lavet specifikt til passwords, ikke til generel hashing.
-- Det er langsomt med vilje — det gør brute-force meget sværere.
+- Det er langsomt med vilje, det gør brute-force meget sværere.
 - Salt bliver genereret automatisk og gemt som en del af hashen.
 - Det er velafprøvet og bruges i mange projekter.
 
